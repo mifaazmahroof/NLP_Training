@@ -21,7 +21,7 @@ import json
 
 TRAIN_DATA = []
 
-jsfile = json.load(open(r"C:\Users\926AJ\Desktop\NLP\IO\master_data.data", "r", encoding='utf-8'))
+jsfile = json.load(open(r"C:\Users\926AJ\Desktop\NLP_Training\master_data_2019_01_04_10_52_31.data", "r", encoding='utf-8'))
 if 'error' in jsfile:
     print("error")
 else:
@@ -30,11 +30,12 @@ else:
     for row in jsfile['rows']:
         print('training ', index, 'of', rowCount)
         index += 1
-        cleanedLabel = re.sub(r'([\s]?[\d]+)', '', row['label'])
-        if cleanedLabel != '':
-            print(cleanedLabel)
-            if cleanedLabel == "verdachte" or cleanedLabel == "slachtoffer" or cleanedLabel == "betrokkene" or cleanedLabel == "appellant" or cleanedLabel == "appellante" or cleanedLabel == "naam" or cleanedLabel == "eiser" or cleanedLabel == "eiseres" or cleanedLabel == "verbalisant" or cleanedLabel == "belanghebbende" or cleanedLabel == "de man" or cleanedLabel == "de vader" or cleanedLabel == "de vrouw" or cleanedLabel == "de moeder" or cleanedLabel == "het kind" or cleanedLabel == "kind 1" or cleanedLabel == "de zoon" or cleanedLabel == "de dochter" or cleanedLabel == "gedaagde" or cleanedLabel == "geintimeerde" or cleanedLabel == "gerekwireerde" or cleanedLabel == "gerequireerde" or cleanedLabel == "rekwirant" or cleanedLabel == "requirant" or cleanedLabel == "rekwirante" or cleanedLabel == "requirante" or cleanedLabel == "slachtoffer" or cleanedLabel == "verzoeker" or cleanedLabel == "verzoekster" or cleanedLabel == "verweerder" or cleanedLabel == "verweerster" or cleanedLabel == "gemachtigde" or cleanedLabel == "vertegenwoordiger" or cleanedLabel == "directeur" or cleanedLabel == "werknemer" or cleanedLabel == "werkgever" or cleanedLabel == "leidinggevende" or cleanedLabel == "arts" or cleanedLabel == "psycholoog" or cleanedLabel == "psychiater" or cleanedLabel == "veroordeelde" or cleanedLabel == "getuige":
-                TRAIN_DATA.append((row['line'], {'entities': [(row['start'], row['end'], 'Person')]}))
+        TRAIN_DATA.append((row['line'], {'entities': [(row['start'], row['end'], row['label'])]}))
+        # cleanedLabel = re.sub(r'([\s]?[\d]+)', '', row['label'])
+        # if cleanedLabel != '':
+        #     print(cleanedLabel)
+        #     if cleanedLabel == "verdachte" or cleanedLabel == "slachtoffer" or cleanedLabel == "betrokkene" or cleanedLabel == "appellant" or cleanedLabel == "appellante" or cleanedLabel == "naam" or cleanedLabel == "eiser" or cleanedLabel == "eiseres" or cleanedLabel == "verbalisant" or cleanedLabel == "belanghebbende" or cleanedLabel == "de man" or cleanedLabel == "de vader" or cleanedLabel == "de vrouw" or cleanedLabel == "de moeder" or cleanedLabel == "het kind" or cleanedLabel == "kind 1" or cleanedLabel == "de zoon" or cleanedLabel == "de dochter" or cleanedLabel == "gedaagde" or cleanedLabel == "geintimeerde" or cleanedLabel == "gerekwireerde" or cleanedLabel == "gerequireerde" or cleanedLabel == "rekwirant" or cleanedLabel == "requirant" or cleanedLabel == "rekwirante" or cleanedLabel == "requirante" or cleanedLabel == "slachtoffer" or cleanedLabel == "verzoeker" or cleanedLabel == "verzoekster" or cleanedLabel == "verweerder" or cleanedLabel == "verweerster" or cleanedLabel == "gemachtigde" or cleanedLabel == "vertegenwoordiger" or cleanedLabel == "directeur" or cleanedLabel == "werknemer" or cleanedLabel == "werkgever" or cleanedLabel == "leidinggevende" or cleanedLabel == "arts" or cleanedLabel == "psycholoog" or cleanedLabel == "psychiater" or cleanedLabel == "veroordeelde" or cleanedLabel == "getuige":
+        #         TRAIN_DATA.append((row['line'], {'entities': [(row['start'], row['end'], 'Person')]}))
         # if index > 200:
         # 	break
 
